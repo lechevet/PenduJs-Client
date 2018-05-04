@@ -17,10 +17,18 @@ class HomePage extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleRedirect = this.handleRedirect.bind(this);
     }
     
     componentDidMount() {
         this.props.dispatch(lobbyActions.getAll());
+    }
+
+    handleRedirect(id) {
+        this.setState({ submitted: true });
+        const { lobby } = this.state;
+        const { dispatch } = this.props;
+        dispatch(lobbyActions.getById(id));
     }
 
     handleChange(event) {
@@ -59,7 +67,11 @@ class HomePage extends React.Component {
                     <ul>
                         {lobbies.items.map((lobby, index) =>
                             <li key={lobby.id}>
-                                {"Lobby n°" + lobby.id + " : " + lobby.name}
+                                {"Lobby n°" + lobby.id + " : "}
+                                {
+
+                                    <span><a onClick={() => this.handleRedirect(lobby.id)}>{lobby.name}</a></span>
+                                }
                             </li>
                         )}
                     </ul>
@@ -85,11 +97,12 @@ class HomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const { lobbies, authentication } = state;
+    const { lobbies, lobby, authentication } = state;
     const { user } = authentication;
     return {
         user,
-        lobbies
+        lobbies,
+        lobby
     };
 }
 

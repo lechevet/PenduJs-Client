@@ -6,6 +6,7 @@ import { history } from '../_helpers';
 export const lobbyActions = {
     create,
     getAll,
+    getById
 };
 
 
@@ -44,5 +45,24 @@ function getAll() {
     function request() { return { type: lobbyConstants.GETALL_REQUEST } }
     function success(lobbies) { return { type: lobbyConstants.GETALL_SUCCESS, lobbies } }
     function failure(error) { return { type: lobbyConstants.GETALL_FAILURE, error } }
+}
+
+function getById(id) {
+    return dispatch => {
+        dispatch(request());
+
+        lobbyService.getById(id)
+            .then(
+                lobby =>  {
+                    dispatch(success(lobby));
+                    history.push('/lobby/' + lobby.id);
+                },
+                error => dispatch(failure(error))
+            );
+        };
+
+    function request() { return { type: lobbyConstants.GET_REQUEST } }
+    function success(lobby) { console.log(lobby); return { type: lobbyConstants.GET_SUCCESS, lobby } }
+    function failure(error) { return { type: lobbyConstants.GET_FAILURE, error } }
 }
 

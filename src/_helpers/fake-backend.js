@@ -135,6 +135,7 @@ export function configureFakeBackend() {
 
                     return;
                 }
+
                 if (url.endsWith('/lobby') && opts.method === 'GET') {
                     // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
                     if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
@@ -146,7 +147,27 @@ export function configureFakeBackend() {
 
                     return;
                 }
-                // pass through any requests not handled above
+
+                
+                if (url.match(/\/lobby\/\d+$/) && opts.method === 'GET') {
+                    // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        // find lobby by id in lobbies array
+                        let urlParts = url.split('/');
+                        let id = parseInt(urlParts[urlParts.length - 1]);
+                        let matchedLobbies = lobbies.filter(lobby => { return lobby.id === id; });
+                        let lobby = matchedLobbies.length ? matchedLobbies[0] : null;
+
+                        // respond 200 OK with lobby
+                        resolve({ ok: true, json: () => lobby});
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+
+                    return;
+                }
+                         // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));
 
             }, 500);

@@ -3,6 +3,7 @@ import { authHeader } from '../_helpers';
 export const lobbyService = {
     create,
     getAll,
+    getById
 };
 
 
@@ -23,6 +24,15 @@ function getAll() {
     };
 
     return fetch('/lobby', requestOptions).then(handleResponse);
+}
+
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch('/lobby/' + id, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
