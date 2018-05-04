@@ -1,5 +1,6 @@
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
+let lobbies = JSON.parse(localStorage.getItem('lobbies')) || [];
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -120,6 +121,31 @@ export function configureFakeBackend() {
                     return;
                 }
 
+                if (url.endsWith('/lobby') && opts.method === 'POST') {
+                    // get new user object from post body
+                    let newLobby = JSON.parse(opts.body);
+
+                    // save new user
+                    newLobby.id = lobbies.length ? Math.max(...lobbies.map(lobby => lobby.id)) + 1 : 1;
+                    lobbies.push(newLobby);
+                    localStorage.setItem('lobbies', JSON.stringify(lobbies));
+
+                    // respond 200 OK
+                    resolve({ ok: true, json: () => ({}) });
+
+                    return;
+                }
+                if (url.endsWith('/lobby') && opts.method === 'GET') {
+                    // check for fake auth token in header and return users if valid, this security is implemented server side in a real application
+                    if (opts.headers && opts.headers.Authorization === 'Bearer fake-jwt-token') {
+                        resolve({ ok: true, json: () => lobbies });
+                    } else {
+                        // return 401 not authorised if token is null or invalid
+                        reject('Unauthorised');
+                    }
+
+                    return;
+                }
                 // pass through any requests not handled above
                 realFetch(url, opts).then(response => resolve(response));
 
