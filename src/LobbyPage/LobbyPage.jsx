@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { lobbyActions } from '../_actions';
 
+import { Hangman } from '../Hangman';
+
 class LobbyPage extends React.Component {
     constructor(props) {
         super(props);
@@ -15,6 +17,7 @@ class LobbyPage extends React.Component {
 
     render() {
         const { user, lobby } = this.props;
+        const { word } = "Bonjour";
         return (
             <div className="col-md-6 col-md-offset-3">
                 {lobby.loading && <em>Loading lobbies...</em>}
@@ -22,6 +25,7 @@ class LobbyPage extends React.Component {
                 {lobby.item &&
                     <h1>Lobby n°{lobby.item.id} : {lobby.item.name}</h1>
                 }
+              <Hangman/>
             </div>
         );
     }

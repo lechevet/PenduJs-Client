@@ -25,7 +25,6 @@ class HomePage extends React.Component {
     }
 
     handleRedirect(id) {
-        this.setState({ submitted: true });
         const { lobby } = this.state;
         const { dispatch } = this.props;
         dispatch(lobbyActions.getById(id));
