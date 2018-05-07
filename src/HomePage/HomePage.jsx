@@ -98,10 +98,12 @@ class HomePage extends React.Component {
 function mapStateToProps(state) {
     const { lobbies, lobby, authentication } = state;
     const { user } = authentication;
+    const { hangman } = "";
     return {
         user,
         lobbies,
-        lobby
+        lobby,
+        hangman
     };
 }
 

@@ -8,7 +8,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.jpg']
     },
     module: {
         loaders: [
@@ -19,7 +19,16 @@ module.exports = {
                 query: {
                     presets: ['react', 'es2015', 'stage-3']
                 }
-            }
+            },
+            {
+                test: /\.jpg$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '../[path][name].[hash:8].[ext]'
+                    },
+                },
+            },
         ]
     },
     plugins: [new HtmlWebpackPlugin({

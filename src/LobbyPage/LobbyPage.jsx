@@ -15,9 +15,12 @@ class LobbyPage extends React.Component {
         this.props.dispatch(lobbyActions.getById(this.props.match.params.id));
     }
 
+    handleReturnHome() {
+        this.props.history.push('/');
+    }
+
     render() {
         const { user, lobby } = this.props;
-        const { word } = "Bonjour";
         return (
             <div className="col-md-6 col-md-offset-3">
                 {lobby.loading && <em>Loading lobbies...</em>}
@@ -26,6 +29,7 @@ class LobbyPage extends React.Component {
                     <h1>Lobby n°{lobby.item.id} : {lobby.item.name}</h1>
                 }
               <Hangman/>
+              <button className="btn btn-primary" onClick={() => this.handleReturnHome()}>Quit</button>
             </div>
         );
     }
