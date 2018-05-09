@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { lobbyActions } from '../_actions';
 
 import { Hangman } from '../Hangman';
+import { Chat } from '../Chat';
 
 class LobbyPage extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class LobbyPage extends React.Component {
                     <h1>Lobby n°{lobby.item.id} : {lobby.item.name}</h1>
                 }
               <Hangman/>
+              <Chat/>
               <button className="btn btn-primary" onClick={() => this.handleReturnHome()}>Quit</button>
             </div>
         );

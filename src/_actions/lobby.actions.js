@@ -62,7 +62,7 @@ function getById(id) {
         };
 
     function request() { return { type: lobbyConstants.GET_REQUEST } }
-    function success(lobby) { console.log(lobby); return { type: lobbyConstants.GET_SUCCESS, lobby } }
+    function success(lobby) { return { type: lobbyConstants.GET_SUCCESS, lobby } }
     function failure(error) { return { type: lobbyConstants.GET_FAILURE, error } }
 }
 

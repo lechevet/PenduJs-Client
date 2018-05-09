@@ -14,7 +14,9 @@ import pendu7 from '../images/pendu7.jpg';
 import pendu8 from '../images/pendu8.jpg';
 
 class Hangman extends React.Component {
-
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const pendu = [pendu0, pendu1, pendu2, pendu3, pendu4, pendu5, pendu6, pendu7, pendu8];
