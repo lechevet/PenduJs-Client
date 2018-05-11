@@ -16,7 +16,11 @@ html, body {
     left: 0;
 }
 
-.btn-nav {
+.btn:hover {
+    color: #fff;
+}
+
+.btn.btn-nav {
     left: 0;
     position: relative;
     width: 100%;
@@ -26,6 +30,7 @@ html, body {
     border-bottom: 1px solid white;
 }
 
-.active {
+.btn-nav.active {
     background-color: #555;
+    color: #fff;
 }
