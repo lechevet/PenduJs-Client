@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, HashRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { lobbyActions } from '../_actions';
+import { LobbyPage } from '../LobbyPage';
 
 class LobbyListPage extends React.Component {
     constructor(props) {
@@ -17,17 +18,10 @@ class LobbyListPage extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleRedirect = this.handleRedirect.bind(this);
     }
     
     componentDidMount() {
         this.props.dispatch(lobbyActions.getAll());
-    }
-
-    handleRedirect(id) {
-        const { lobby } = this.state;
-        const { dispatch } = this.props;
-        dispatch(lobbyActions.getById(id));
     }
 
     handleChange(event) {
@@ -56,7 +50,9 @@ class LobbyListPage extends React.Component {
         const { user, lobbies } = this.props;
         const { lobby, submitted } = this.state;
         return (
+            <HashRouter>
             <div className="col-md-6 col-md-offset-3">
+                <h2> Lobbies List </h2>
                 {lobbies.loading && <em>Loading lobbies...</em>}
                 {lobbies.error && <span className="text-danger">ERROR: {lobbies.error}</span>}
                 {lobbies.items &&
@@ -65,13 +61,15 @@ class LobbyListPage extends React.Component {
                             <li key={lobby.id}>
                                 {"Lobby n°" + lobby.id + " : "}
                                 {
-
-                                    <span><a onClick={() => this.handleRedirect(lobby.id)}>{lobby.name}</a></span>
+                                    <NavLink to={"/lobby/" + lobby.id}>{lobby.name}</NavLink>
                                 }
                             </li>
                         )}
                     </ul>
                 }
+                <div className="col-md-6 col-md-offset-3">
+                        <Route exact path="/lobby/:id" component={LobbyPage} />
+                </div>                
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !lobby.name ? ' has-error' : '')}>
                         <label htmlFor="name">Lobby Name</label>
@@ -85,6 +83,7 @@ class LobbyListPage extends React.Component {
                     </div>
                 </form>
             </div>
+            </HashRouter>
         );
     }
 }

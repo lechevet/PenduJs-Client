@@ -1,7 +1,6 @@
 import React from 'react';
 import { HashRouter, NavLink, Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { HomePage } from '../HomePage';
 import { LobbyListPage } from '../LobbyListPage';
 import { AccountPage } from '../AccountPage';
@@ -16,11 +15,11 @@ class Dashboard extends React.Component {
         return (
             <HashRouter>
                 <div className="dashboard">
-                    <ul className="navigation">
-                        <li><NavLink to="/lobbies">Lobbies</NavLink></li>
-                        <li><NavLink to="/account">{user.username}</NavLink></li>
-                        <li><a href="/login">Logout</a></li>
-                    </ul>
+                    <div className="navigation">
+                        <NavLink className="btn btn-nav" to="/lobbies">Lobbies</NavLink>
+                        <NavLink className="btn btn-nav" to="/account">{user.username}</NavLink>
+                        <a className="btn btn-nav" href="/login">Logout</a>
+                    </div>
                     <div className="col-md-6 col-md-offset-3">
                         <Route exact path="/" component={HomePage} />
                         <Route path="/account" component={AccountPage} />

@@ -9,7 +9,7 @@ class AccountPage extends Component {
     render() {
         const {user} = this.props;
         return (
-            <div>
+            <div className="col-md-6 col-md-offset-3">
                 <h2> Account informations </h2>
                 <p>Firstname = {user.firstName}</p>
                 <p>Lastname = {user.lastName}</p>

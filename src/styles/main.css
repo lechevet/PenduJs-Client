@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #eee;
+}
+
+#app {
+    min-height: 100%;
+}
+
+.navigation {
+    position: fixed;
+    background-color: black;
+    min-height: 100%;
+    width: 20%;
+    left: 0;
+}
+
+.btn-nav {
+    left: 0;
+    position: relative;
+    width: 100%;
+    color: #fff;
+    font-size: 150%;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+.active {
+    background-color: #555;
+}
