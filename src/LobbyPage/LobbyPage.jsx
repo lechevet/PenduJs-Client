@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { lobbyActions } from '../_actions';
@@ -31,7 +31,7 @@ class LobbyPage extends React.Component {
                 }
               <Hangman/>
               <Chat/>
-              <button className="btn btn-primary" onClick={() => this.handleReturnHome()}>Quit</button>
+              <NavLink className="btn btn-primary btn-quit" to="/lobbies">Quit</NavLink>
             </div>
         );
     }

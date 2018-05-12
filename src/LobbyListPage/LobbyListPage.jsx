@@ -67,9 +67,6 @@ class LobbyListPage extends React.Component {
                         )}
                     </ul>
                 }
-                <div className="col-md-6 col-md-offset-3">
-                        <Route exact path="/lobby/:id" component={LobbyPage} />
-                </div>                
                 <form name="form" onSubmit={this.handleSubmit}>
                     <div className={'form-group' + (submitted && !lobby.name ? ' has-error' : '')}>
                         <label htmlFor="name">Lobby Name</label>

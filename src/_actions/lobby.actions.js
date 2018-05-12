@@ -55,7 +55,6 @@ function getById(id) {
             .then(
                 lobby =>  {
                     dispatch(success(lobby));
-                    history.push('/lobby/' + lobby.id);
                 },
                 error => dispatch(failure(error))
             );

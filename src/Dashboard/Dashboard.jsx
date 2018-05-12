@@ -3,6 +3,7 @@ import { HashRouter, NavLink, Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { HomePage } from '../HomePage';
 import { LobbyListPage } from '../LobbyListPage';
+import { LobbyPage } from '../LobbyPage';
 import { AccountPage } from '../AccountPage';
 
 class Dashboard extends React.Component {
@@ -24,6 +25,7 @@ class Dashboard extends React.Component {
                         <Route exact path="/" component={HomePage} />
                         <Route path="/account" component={AccountPage} />
                         <Route path="/lobbies" component={LobbyListPage} />
+                        <Route path="/lobby/:id" component={LobbyPage} />
                     </div>
                 </div>
             </HashRouter>

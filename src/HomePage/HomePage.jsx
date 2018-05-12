@@ -9,7 +9,7 @@ class HomePage extends React.Component {
     render() {
         const { user } = this.props;
         return (
-                <div className="homepage">
+            <div className="col-md-6 col-md-offset-3">
                     <h1>{ "Hey " + user.username + " !"}</h1>
                     <h2>Welcome to PenduJS !</h2>
                 </div>

@@ -34,3 +34,11 @@ html, body {
     background-color: #555;
     color: #fff;
 }
+
+.btn-quit {
+    color: #fff;
+}
+
+.btn-quit:hover {
+    color: #fff;
+}
