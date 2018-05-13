@@ -6,15 +6,17 @@ export const lobbyService = {
     getById
 };
 
+const port = 4187;
+const apiUrl = "http://localhost:"+ port +"/api/1.0";
 
 function create(lobby) {
     const requestOptions = {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(lobby)
+        headers: authHeader(),
+        body: JSON.stringify({ name: lobby.name })
     };
-
-    return fetch('/lobby', requestOptions).then(handleResponse);
+    console.log(requestOptions);
+    return fetch(apiUrl + '/lobby/createLobby', requestOptions).then(handleResponse);
 }
 
 function getAll() {
@@ -23,7 +25,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch('/lobby', requestOptions).then(handleResponse);
+    return fetch(apiUrl + '/lobby/getAllLobbies', requestOptions).then(handleResponse);
 }
 
 function getById(id) {

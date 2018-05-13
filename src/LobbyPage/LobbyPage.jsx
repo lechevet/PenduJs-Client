@@ -24,10 +24,8 @@ class LobbyPage extends React.Component {
         const { user, lobby } = this.props;
         return (
             <div className="col-md-6 col-md-offset-3">
-                {lobby.loading && <em>Loading lobbies...</em>}
-                {lobby.error && <span className="text-danger">ERROR: {lobbies.error}</span>}
                 {lobby.item &&
-                    <h1>Lobby n°{lobby.item.id} : {lobby.item.name}</h1>
+                    <h1>Lobby  {lobby.item.name}</h1>
                 }
               <Hangman/>
               <Chat/>

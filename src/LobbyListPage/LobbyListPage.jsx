@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, HashRouter, Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { lobbyActions } from '../_actions';
@@ -43,6 +43,8 @@ class LobbyListPage extends React.Component {
         const { dispatch } = this.props;
         if (lobby.name) {
             dispatch(lobbyActions.create(lobby));
+            // TODO REPLACE GETALL CALL WITH JOIN
+            dispatch(lobbyActions.getAll());
         }
     }
 
@@ -50,7 +52,6 @@ class LobbyListPage extends React.Component {
         const { user, lobbies } = this.props;
         const { lobby, submitted } = this.state;
         return (
-            <HashRouter>
             <div className="col-md-6 col-md-offset-3">
                 <h2> Lobbies List </h2>
                 {lobbies.loading && <em>Loading lobbies...</em>}
@@ -58,11 +59,8 @@ class LobbyListPage extends React.Component {
                 {lobbies.items &&
                     <ul>
                         {lobbies.items.map((lobby, index) =>
-                            <li key={lobby.id}>
-                                {"Lobby n°" + lobby.id + " : "}
-                                {
-                                    <NavLink to={"/lobby/" + lobby.id}>{lobby.name}</NavLink>
-                                }
+                            <li key={lobby._id}>
+                                <NavLink to={"/lobby/" + lobby._id}>{lobby.name}</NavLink>
                             </li>
                         )}
                     </ul>
@@ -80,7 +78,6 @@ class LobbyListPage extends React.Component {
                     </div>
                 </form>
             </div>
-            </HashRouter>
         );
     }
 }

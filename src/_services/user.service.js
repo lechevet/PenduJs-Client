@@ -10,14 +10,17 @@ export const userService = {
     delete: _delete
 };
 
-function login(username, password) {
+const port = 4187;
+const apiUrl = "http://localhost:"+ port +"/api/1.0";
+
+function login(login, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ login, password })
     };
 
-    return fetch('/users/authenticate', requestOptions)
+    return fetch(apiUrl + '/auth/login', requestOptions)
         .then(response => {
             if (!response.ok) { 
                 return Promise.reject(response.statusText);
@@ -27,12 +30,13 @@ function login(username, password) {
         })
         .then(user => {
             // login successful if there's a jwt token in the response
-            if (user && user.token) {
+            if (user.user && user.user.token) {
+                console.log(user.user);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user));
+                localStorage.setItem('user', JSON.stringify(user.user));
             }
 
-            return user;
+            return user.user;
         });
 }
 
@@ -61,12 +65,12 @@ function getById(id) {
 
 function register(user) {
     const requestOptions = {
-        method: 'POST',
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-
-    return fetch('/users/register', requestOptions).then(handleResponse);
+    console.log(requestOptions);
+    return fetch(apiUrl + '/auth/register', requestOptions).then(handleResponse);
 }
 
 function update(user) {

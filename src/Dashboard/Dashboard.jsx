@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
                 <div className="dashboard">
                     <div className="navigation">
                         <NavLink className="btn btn-nav" to="/lobbies">Lobbies</NavLink>
-                        <NavLink className="btn btn-nav" to="/account">{user.username}</NavLink>
+                        <NavLink className="btn btn-nav" to="/account">{user.userName}</NavLink>
                         <a className="btn btn-nav" href="/login">Logout</a>
                     </div>
                     <div className="col-md-6 col-md-offset-3">

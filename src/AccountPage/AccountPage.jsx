@@ -11,8 +11,8 @@ class AccountPage extends Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2> Account informations </h2>
-                <p>Firstname = {user.firstName}</p>
-                <p>Lastname = {user.lastName}</p>
+                <p>Username = {user.userName}</p>
+                <p>Email = {user.email_address}</p>
             </div>
         );
     }
