@@ -16,7 +16,6 @@ class Buttons extends Component {
          <button
            key={index}
            onClick={this.makeGuess.bind(this, letter)}
-
            disabled={this.props.status === 'winner' || this.props.status === 'loser'}>
            {letter}</button>
            );
@@ -32,9 +31,11 @@ class Buttons extends Component {
    }
 
 function mapStateToProps(state) {
-    const { lobby } = state;
+    const { lobby, game } = state;
+    const { status } = game.item;
     return {
-        lobby
+        lobby,
+        status
     };
 }
 

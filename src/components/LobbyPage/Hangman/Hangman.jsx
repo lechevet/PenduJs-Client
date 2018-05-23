@@ -38,24 +38,23 @@ class Hangman extends React.Component {
   render() {
     const pendu = [pendu0, pendu1, pendu2, pendu3, pendu4, pendu5, pendu6, pendu7, pendu8];
     const { game } = this.props;
-    const renderGame =  game.item != "user connected" ? game.item : this.game;
     return (
       <div>
         <div>
-          <img src={pendu[renderGame.wrongGuessCount]}/>
+          <img src={pendu[game.item.wrongGuessCount]}/>
         </div>
         <p>
-          { renderGame.format }
+          { game.item.format }
         </p>
         <Buttons client={this.client}/>
         <p>
-         Wrong Guesses: { renderGame.wrongGuessCount }
+         Wrong Guesses: { game.item.wrongGuessCount }
         </p>
         <p>
-          Letters used : { renderGame.guesses && renderGame.guesses.join() }
+          Letters used : { game.item.guesses && game.item.guesses.join() }
         </p>
         <p>
-          Status: { renderGame.status }
+          Status: { game.item.status }
         </p>
 
       </div>
