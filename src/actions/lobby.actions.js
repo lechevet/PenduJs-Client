@@ -3,6 +3,7 @@ import { lobbyConstants } from '../redux/constants';
 
 export const lobbyActions = {
     getAll,
+    getById,
     create,
     _delete
 }
@@ -40,6 +41,24 @@ function create(lobby) {
     function request(lobby) { return { type: lobbyConstants.CREATE_REQUEST, lobby } }
     function success(lobby) { return { type: lobbyConstants.CREATE_SUCCESS, lobby } }
     function failure(error) { return { type: lobbyConstants.CREATE_FAILURE, error } }
+}
+
+function getById(id) {
+    return dispatch => {
+        dispatch(request());
+
+        lobbyService.getById(id)
+            .then(
+                lobby =>  {
+                    dispatch(success(lobby));
+                },
+                error => dispatch(failure(error))
+            );
+        };
+
+    function request() { return { type: lobbyConstants.GET_REQUEST } }
+    function success(lobby) { return { type: lobbyConstants.GET_SUCCESS, lobby } }
+    function failure(error) { return { type: lobbyConstants.GET_FAILURE, error } }
 }
 
 function _delete(id) {

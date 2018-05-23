@@ -3,6 +3,7 @@ import { authHeader } from '../helpers';
 export const lobbyService = {
     getAll,
     create,
+    getById,
     _delete
 };
 
@@ -28,6 +29,15 @@ function create(lobby) {
     return fetch(apiUrl + '/lobby/createLobby', requestOptions).then(handleResponse);
 }
 
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' }
+    };
+
+    return fetch(apiUrl + '/lobby/' + id, requestOptions).then(handleResponse);
+}
+
 function _delete(id) {
     const requestOptions = {
         method: 'DELETE',
@@ -41,6 +51,5 @@ function handleResponse(response) {
     if (!response.ok) { 
         return Promise.reject(response.statusText);
     }
-
     return response.json();
 }
