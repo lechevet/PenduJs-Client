@@ -1,0 +1,25 @@
+.main-view {
+    overflow-y: scroll;
+    position: fixed;
+    min-height: 90%;
+    height: 90%;
+    min-width: 80%;
+    width: 80%;
+    left: 20%;
+    text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #222; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555; 
+}

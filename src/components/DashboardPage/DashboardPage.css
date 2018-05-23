@@ -1,0 +1,12 @@
+.dashboardpage {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+    background-color: #36393f;
+    border-radius: 4px;
+    /* border-color: #eee; */
+    border: solid 2px #222;
+    -webkit-box-shadow: 0 0 20px 2px #464646;
+    box-shadow: 0 0 20px 2px #464646;
+    color: #f6f6f7;
+}

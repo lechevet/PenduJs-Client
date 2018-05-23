@@ -1,0 +1,64 @@
+.app-lobby-list {
+    display: inline-block;
+    margin: 1%;
+    vertical-align: top;
+}
+
+.app-lobby {
+    min-width: 50px;
+    width: 180px;
+    min-height: 100px;
+    height: 150px;
+    background: url("../../../assets/icons/lobby-icon.png") 50% 20% no-repeat;
+    background-size: 40%;
+    background-color: #ccc;
+    border: solid 1px transparent;
+    border-radius: 4px;
+}
+
+.app-lobby-text {
+    position: relative;
+    color: #222;
+    top: 60%;
+    display: block;
+    min-height: 40%;
+    word-wrap: break-word;
+}
+
+.app-lobby:hover {
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+.form-btn {
+    cursor: pointer;
+    width: 100%;
+    background-color: #36393f;
+    margin-top: 4%;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 100%;
+    height: 2em;
+}
+
+.app-lobby-delete {
+    /* background-color: #aa0303; */
+    color: rgb(240, 71, 71);
+}
+
+.app-lobby-delete:hover {
+    background-color: rgba(240, 71, 71, 0.15);
+}
+
+.refresh-btn {
+    position: relative;
+    vertical-align: top;
+    width: 25px;
+    height: 25px;
+    left: 1%;
+}
+
+.refresh-btn:hover {
+    cursor: pointer;
+}

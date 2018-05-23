@@ -1,0 +1,33 @@
+.menu {
+    position: fixed;
+    min-height: 100%;
+    width: 20%;
+    left: 0px;
+    background-color: #2f3136;
+}
+
+.menu-link {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    min-width: 97%;
+    height: 50px;
+    border-radius: 3px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    line-height: 50px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.menu-link:hover {
+    background-color: #555;
+}
+
+.active {
+    background-color: #555;
+}
+
+.fake-btn:hover {
+    cursor: pointer;
+}

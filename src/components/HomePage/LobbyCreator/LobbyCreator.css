@@ -1,0 +1,43 @@
+.lobby-creator {
+    display: inline-block;
+    padding: 2%;
+    border-bottom: solid 1px #222;
+    width: 80%;
+}
+
+.lobby-form {
+    text-align: unset;
+}
+
+.app-btn {
+    cursor: pointer;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    width: 3%;
+    color: #fff;
+    font-size: 100%;
+}
+
+.btn-create-lobby {
+    position: relative;
+    left: 20px;
+    line-height: 30px;
+    background-color: #43b581;
+    width: auto;
+}
+
+.btn-create-lobby:hover {
+    background-color: #479773;
+}
+
+.input-lobby-name {
+    border-radius: 3px;
+    border: solid 1px transparent;
+    font-size: 110%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.label-lobbyname {
+    padding-right:10px;
+}
