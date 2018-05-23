@@ -13,9 +13,6 @@ export function authentication(state = {}, action) {
             };
         case authenticationConstants.REGISTER_SUCCESS:
             return {
-                item : action.user,
-                loggedIn: true,
-                user: action.user
             };
         case authenticationConstants.REGISTER_FAILURE:
             return { registration: true };
