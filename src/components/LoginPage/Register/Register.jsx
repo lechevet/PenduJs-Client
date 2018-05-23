@@ -66,7 +66,7 @@ class Register extends Component {
                         <div>
                             Password
                         </div>
-                        <input className="login-form-input" text="text" name="password1" value={user.password1} onChange={this.handleChange}/>
+                        <input className="login-form-input" type="password" name="password1" value={user.password1} onChange={this.handleChange}/>
                         <div>
                             Confirm your password
                         </div>
