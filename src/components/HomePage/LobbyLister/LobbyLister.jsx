@@ -34,7 +34,7 @@ class LobbyLister extends Component {
             <div className="lobby-lister">
                 <h2>
                     Lobbies :
-                    <img className="refresh-btn" onClick={this.handleRefresh} src={refresh} /> 
+                    <img className="refresh-btn" onClick={this.handleRefresh} src={refresh} alt="refresh" /> 
                 </h2>
                 {lobbies.loading && <em>Loading lobbies...</em>}
                 {lobbies.error && <span className="text-danger">ERROR: {lobbies.error}</span>}

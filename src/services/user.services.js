@@ -11,7 +11,7 @@ export const userService = {
 };
 
 const port = 4187;
-const apiUrl = "http://hazarp.ddns.net:"+ port +"/api/1.0";
+const apiUrl = "http://localhost:"+ port +"/api/1.0";
 
 function login(login, password) {
     const requestOptions = {

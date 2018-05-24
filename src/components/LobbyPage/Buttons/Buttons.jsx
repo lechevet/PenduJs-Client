@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import * as SocketIO from 'socket.io-client';
 
 import { connect } from 'react-redux';
 import letters from './Letters';
 
+import './Buttons.css';
 
 class Buttons extends Component {
 
@@ -12,18 +12,24 @@ class Buttons extends Component {
     }
 
     renderLetter(letter, index) {
+      const { game } = this.props;
        return (
-         <button
-           key={index}
-           onClick={this.makeGuess.bind(this, letter)}
-           disabled={this.props.status === 'winner' || this.props.status === 'loser'}>
-           {letter}</button>
-           );
-     }
+          <span>
+            { game &&
+            <button
+            className="hang-button"
+            key={index}
+            onClick={this.makeGuess.bind(this, letter)}
+            disabled={this.props.status === 'winner' || this.props.status === 'loser'}>
+            {letter}</button>
+          }
+        </span>
+      );
+    }
    
      render() {
        return (
-         <div>
+         <div className="hang-button-list">
            {letters.map(this.renderLetter.bind(this))}
          </div>
        )
@@ -32,10 +38,9 @@ class Buttons extends Component {
 
 function mapStateToProps(state) {
     const { lobby, game } = state;
-    const { status } = game.item;
     return {
         lobby,
-        status
+        game
     };
 }
 

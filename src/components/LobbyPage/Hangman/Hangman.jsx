@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'underscore';
 import { connect } from 'react-redux';
 
 import { ServerAPI } from '../../../classes';
@@ -15,6 +14,7 @@ import pendu6 from '../../../assets/img/pendu6.jpg';
 import pendu7 from '../../../assets/img/pendu7.jpg';
 import pendu8 from '../../../assets/img/pendu8.jpg';
 
+import './Hangman.css';
 
 class Hangman extends React.Component {
   constructor(props) {
@@ -24,15 +24,25 @@ class Hangman extends React.Component {
       guesses: [],
       wrongGuessCount: 0
     };
+
+    this.handleRestart = this.handleRestart.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { dispatch } = this.props;
     this.client = new ServerAPI();
-    this.client.connect();
+    this.client.connect(this.props.id);
     this.client.onGame((res) => {
       dispatch(gameActions.getRes(res));
     });
+  }
+
+  componentWillUnmount() {
+    this.client.disconnect();
+  }
+
+  handleRestart() {
+    this.client.restart();
   }
 
   render() {
@@ -40,23 +50,32 @@ class Hangman extends React.Component {
     const { game } = this.props;
     return (
       <div>
+        <h2>
+          Status: { game.item && game.item.status }
+        </h2>
+        { game.item && game.item.word &&
+          <div className="end-game">
+            <div style={{display: 'inline-block'}}>Word was: { game.item.word}</div>
+          </div>
+        }
+        { game.item && game.item.word &&
+          <div className="app-btn restart-btn" onClick={this.handleRestart}>
+            Restart
+          </div>
+        }
         <div>
-          <img src={pendu[game.item.wrongGuessCount]}/>
+          { game.item && <img src={pendu[game.item.wrongGuessCount]} alt="hangman"/> }
         </div>
         <p>
-          { game.item.format }
+          { game.item && game.item.format }
         </p>
         <Buttons client={this.client}/>
         <p>
-         Wrong Guesses: { game.item.wrongGuessCount }
+         Wrong Guesses: { game.item && game.item.wrongGuessCount }
         </p>
         <p>
-          Letters used : { game.item.guesses && game.item.guesses.join() }
+          Letters used : { game.item && game.item.guesses && game.item.guesses.join() }
         </p>
-        <p>
-          Status: { game.item.status }
-        </p>
-
       </div>
     );
   }

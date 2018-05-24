@@ -1,0 +1,11 @@
+.restart-btn {
+    display: inline-block;
+    line-height: 30px;
+    background-color: #43b581;
+    width: 60px;
+    margin: 1%;
+}
+
+.restart-btn:hover {
+    cursor: pointer;
+}

@@ -16,9 +16,9 @@ class LobbyPage extends Component {
         return (
             <div className="lobby-page">
                 { lobby.item &&
-                    <h2>Lobby {  lobby.item.name }</h2>
+                    <h1>Lobby {  lobby.item.name }</h1>
                 }
-                <Hangman />
+                <Hangman id={this.props.match.params.id}/>
             </div>
         );
     }

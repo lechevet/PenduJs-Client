@@ -1,0 +1,20 @@
+.hang-button-list {
+    width: 33%;
+    margin-left: 33%;
+}
+
+.hang-button {
+    width: 33px;
+    text-align: center;
+    border: solid 1px transparent;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 1%;
+    margin-bottom: 2%;
+}
+
+
+.hang-button:over {
+    cursor: pointer;
+}

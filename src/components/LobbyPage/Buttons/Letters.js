@@ -1,2 +1,2 @@
-let letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+let letters = 'qwertyuiopasdfghjklmzxcvbn'.split('');
 export default letters
