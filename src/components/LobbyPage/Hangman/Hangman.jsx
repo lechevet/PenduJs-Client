@@ -54,6 +54,7 @@ class Hangman extends React.Component {
           </div>
         }
         { game.item  &&
+        (game.item.status === "winner" || game.item.status === "loser") &&
           <div className="app-btn restart-btn" onClick={this.handleRestart}>
             Restart
           </div>

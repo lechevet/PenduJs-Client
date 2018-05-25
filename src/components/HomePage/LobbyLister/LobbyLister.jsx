@@ -36,9 +36,9 @@ class LobbyLister extends Component {
                     Lobbies :
                     <img className="refresh-btn" onClick={this.handleRefresh} src={refresh} alt="refresh" /> 
                 </h2>
-                {lobbies.loading && <em>Loading lobbies...</em>}
-                {lobbies.error && <span className="text-danger">ERROR: {lobbies.error}</span>}
-                {lobbies.items &&
+                {lobbies && lobbies.loading && <em>Loading lobbies...</em>}
+                {lobbies && lobbies.error && <span className="text-danger">ERROR: {lobbies.error}</span>}
+                {lobbies && lobbies.items &&
                     <ul>
                         {lobbies.items.map((lobby, index) =>
                             <div className="app-lobby-list">
