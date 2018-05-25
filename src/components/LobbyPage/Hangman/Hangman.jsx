@@ -28,6 +28,7 @@ class Hangman extends React.Component {
     this.client = new ServerAPI();
     this.client.connect(this.props.id);
     this.client.onGame((res) => {
+      console.log(res);
       dispatch(gameActions.getRes(res));
     });
   }
