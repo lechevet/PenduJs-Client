@@ -19,11 +19,6 @@ import './Hangman.css';
 class Hangman extends React.Component {
   constructor(props) {
     super(props);
-    this.game = {
-      format: "_ _ _ _ _ _ _ _",
-      guesses: [],
-      wrongGuessCount: 0
-    };
 
     this.handleRestart = this.handleRestart.bind(this);
   }
@@ -58,7 +53,7 @@ class Hangman extends React.Component {
             <div style={{display: 'inline-block'}}>Word was: { game.item.word}</div>
           </div>
         }
-        { game.item && game.item.word &&
+        { game.item  &&
           <div className="app-btn restart-btn" onClick={this.handleRestart}>
             Restart
           </div>

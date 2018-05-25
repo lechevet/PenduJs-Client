@@ -1,7 +1,7 @@
 import * as SocketIO from 'socket.io-client';
 
 const port = 4187;
-const apiUrl = "http://localhost:"+ port;
+const apiUrl = "http://hazarp.ddns.net:"+ port;
 
 class ServerAPI {
     client = null;
